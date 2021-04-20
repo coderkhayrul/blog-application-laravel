@@ -31,4 +31,10 @@ class BlogsController extends Controller
         return redirect()->route('blogs.index');
 
     }
+    // Show Method
+    public function show($id)
+    {
+        $blogs = Blog::findOrFail($id);
+        return view('blogs.show', compact('blogs'));
+    }
 }
