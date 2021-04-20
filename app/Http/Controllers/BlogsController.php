@@ -21,13 +21,14 @@ class BlogsController extends Controller
     // Store Method
     public function store(Request $request)
     {
-
-        $blogs = new Blog();
-        $blogs->title = $request->title;
-        $blogs->body = $request->body;
-
-        $blogs->save();
-        return back();
+        $input = $request->all();
+        $blog = Blog::create($input);
+//        $blog = new Blog();
+//        $blog->title = $request->title;
+//        $blog->body = $request->body;
+//
+//        $blog->save();
+        return redirect()->route('blogs.index');
 
     }
 }
