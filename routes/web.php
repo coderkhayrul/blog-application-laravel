@@ -25,3 +25,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //Blogs Route
 Route::get('/blogs', [BlogsController::class, 'index'])->name('blogs.index');
+Route::get('/blogs/create', [BlogsController::class, 'create'])->name('blogs.create');
+Route::post('/blogs/store', [BlogsController::class, 'store'])->name('blogs.store');
