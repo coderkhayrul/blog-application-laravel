@@ -29,4 +29,5 @@ Route::post('/blogs/store', [BlogsController::class, 'store'])->name('blogs.stor
 Route::get('/blogs/{id}', [BlogsController::class, 'show'])->name('blogs.show');
 Route::get('/blogs/{id}/edit', [BlogsController::class, 'edit'])->name('blogs.edit');
 Route::put('/blogs/{id}/update', [BlogsController::class, 'update'])->name('blogs.update');
+Route::delete('/blogs/{id}/destroy', [BlogsController::class, 'destroy'])->name('blogs.destroy');
 
