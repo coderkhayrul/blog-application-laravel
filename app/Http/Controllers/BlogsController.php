@@ -53,16 +53,22 @@ class BlogsController extends Controller
     }
     public function destroy($id)
     {
-        $blog = Blog::findOrFail($id);
+
+        $blog = Blog::findOrFail($id);;
+
         $blog->delete();
         return redirect()->route('blogs.index');
 
     }
     public function trash()
     {
-
-       $trashedBlogs = Blog::onlyTrashed()->get();
+        $trashedBlogs = Blog::onlyTrashed()->get();
        return view('blogs.trash', compact('trashedBlogs'));
-
+    }
+    public function restore($id)
+    {
+       $restoredBlog = Blog::onlyTrashed()->findOrFail($id);
+       $restoredBlog->restore($restoredBlog);
+       return redirect()->route('blogs.index');
     }
 }
