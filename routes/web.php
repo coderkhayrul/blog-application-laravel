@@ -26,13 +26,13 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/blogs', [BlogsController::class, 'index'])->name('blogs.index');
 Route::get('/blogs/create', [BlogsController::class, 'create'])->name('blogs.create');
 Route::post('/blogs/store', [BlogsController::class, 'store'])->name('blogs.store');
-//Keep Trashed Route Here
-Route::get('//blogs/trash', [BlogsController::class, 'trash'])->name('blogs.trash');
-Route::get('//blogs/trash/{id}/restore', [BlogsController::class, 'restore'])->name('blogs.restore');
-Route::delete('//blogs/trash/{id}/permanent-delete', [BlogsController::class, 'permanent_delete'])->name('blogs.permanent-delete');
-
 Route::get('/blogs/{id}', [BlogsController::class, 'show'])->name('blogs.show');
 Route::get('/blogs/{id}/edit', [BlogsController::class, 'edit'])->name('blogs.edit');
 Route::put('/blogs/{id}/update', [BlogsController::class, 'update'])->name('blogs.update');
 Route::delete('/blogs/{id}/destroy', [BlogsController::class, 'destroy'])->name('blogs.destroy');
 
+// <-- Keep Trashed blog Route Here -->
+Route::get('//blogs/trash', [BlogsController::class, 'trash'])->name('blogs.trash');
+Route::get('//blogs/trash/{id}/restore', [BlogsController::class, 'restore'])->name('blogs.restore');
+Route::delete('//blogs/trash/{id}/permanent-delete', [BlogsController::class, 'permanent_delete'])->name('blogs.permanent-delete');
+// <-- Keep Trashed Route Here -->
