@@ -71,4 +71,10 @@ class BlogsController extends Controller
        $restoredBlog->restore($restoredBlog);
        return redirect()->route('blogs.index');
     }
+    public function permanent_delete($id)
+    {
+        $permanent_delete = Blog::onlyTrashed()->findOrFail($id);
+        $permanent_delete->forceDelete($permanent_delete);
+       return back();
+    }
 }

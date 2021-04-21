@@ -29,6 +29,7 @@ Route::post('/blogs/store', [BlogsController::class, 'store'])->name('blogs.stor
 //Keep Trashed Route Here
 Route::get('//blogs/trash', [BlogsController::class, 'trash'])->name('blogs.trash');
 Route::get('//blogs/trash/{id}/restore', [BlogsController::class, 'restore'])->name('blogs.restore');
+Route::delete('//blogs/trash/{id}/permanent-delete', [BlogsController::class, 'permanent_delete'])->name('blogs.permanent-delete');
 
 Route::get('/blogs/{id}', [BlogsController::class, 'show'])->name('blogs.show');
 Route::get('/blogs/{id}/edit', [BlogsController::class, 'edit'])->name('blogs.edit');
