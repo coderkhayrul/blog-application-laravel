@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -40,3 +41,5 @@ Route::delete('/blogs/{id}/destroy', [BlogsController::class, 'destroy'])->name(
 
 // <-- ADMIN ROUTES -->
 Route::get('/admin', [AdminController::class , 'index'])->name('admin.index');
+//Category Resource Route
+Route::resource('/category', CategoryController::class);
