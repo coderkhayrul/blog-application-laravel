@@ -13,6 +13,11 @@
                     </form>
                 </div>
             </div>
+            <div class="col-md 12">
+                @foreach($category->blog as $blog)
+                    <h3><a href="{{ route('blogs.show', $blog->id) }}">{{ $blog->title }}</a></h3>
+                @endforeach
+            </div>
         </article>
     </div>
 @endsection

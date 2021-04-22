@@ -15,6 +15,12 @@
                    <label for="body">Body</label>
                    <textarea class="form-control" name="body" id="" cols="30" rows="10"></textarea>
                </div>
+               <div class="form-group form-check form-check-inline">
+                   @foreach($categories as $category)
+                        <input class="form-check-input ml-2" type="checkbox" value="{{ $category->id }}" name="category_id[]">
+                        <label class="form-check-label ">{{ $category->name }}</label>
+                   @endforeach
+               </div>
                <button type="submit" class="btn btn-primary">Create a new Blog</button>
            </form>
        </div>

@@ -46,7 +46,7 @@ class CategoryController extends Controller
         $category->name = strtoupper($request->name);
         $category->slug = Str::slug($request->name, '-');
         $category->save();
-        return  back();
+        return  redirect('blogs');
     }
 
     /**

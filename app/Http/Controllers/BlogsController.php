@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class BlogsController extends Controller
@@ -10,25 +11,25 @@ class BlogsController extends Controller
     // Index Method
     public function index()
     {
-        $blogs =  Blog::all();
+        $blogs =  Blog::latest()->get();
         return view('blogs.index', compact('blogs'));
     }
     // Create Method
     public function create()
     {
-        return view('blogs.create');
+        $categories = Category::all();
+        return view('blogs.create', compact('categories'));
     }
     // Store Method
     public function store(Request $request)
     {
         $input = $request->all();
         $blog = Blog::create($input);
-//        $blog = new Blog();
-//        $blog->title = $request->title;
-//        $blog->body = $request->body;
-//
-//        $blog->save();
-        return redirect()->route('blogs.index');
+        //  sync with category
+        if ($request->category_id){
+            $blog->category()->sync($request->category_id);
+        }
+        return redirect('/blogs');
 
     }
     // Show Method

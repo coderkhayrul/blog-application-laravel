@@ -15,6 +15,11 @@
             </div>
             <div class="col-md-12">
                 <p>{{ $blogs->body }}</p>
+                <hr>
+                <strong>Categories:</strong>
+                @foreach($blogs->category as $category)
+                    <span><a href="{{ route('category.show', $category->slug) }}">{{ $category->name }}</a></span>
+                @endforeach
             </div>
         </article>
     </div>
