@@ -9,4 +9,8 @@ class Category extends Model
 {
     use HasFactory;
 
+    //  Many Relationship
+    public function  blog(){
+        return $this->belongsToMany(Blog::class);
+    }
 }

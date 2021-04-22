@@ -12,4 +12,9 @@ class Blog extends Model
     use HasFactory;
     protected $dates = ['deleted_at'];
     protected $fillable = ['title', 'body'];
+
+    //  Many Relationship
+    public function  category(){
+        return $this->belongsToMany(Category::class);
+    }
 }
