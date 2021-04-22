@@ -39,4 +39,4 @@ Route::put('/blogs/{id}/update', [BlogsController::class, 'update'])->name('blog
 Route::delete('/blogs/{id}/destroy', [BlogsController::class, 'destroy'])->name('blogs.destroy');
 
 // <-- ADMIN ROUTES -->
-Route::get('/admin', [AdminController::class , 'index'])->name('admin.index');
+Route::get('/admin', [AdminController::class , 'index'])->name('admin.index')->middleware('admin');
