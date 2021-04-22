@@ -3,18 +3,15 @@
     <div class="container-fluid">
         <article>
             <div class="jumbotron">
-                <h1>{{ $blogs->title }}</h1>
+                <h1>{{ $category->name }}</h1>
                 <div class="btn-group">
-                    <a class="btn btn-primary mr-2" href="{{ route('blogs.edit', $blogs->id) }}">Edit</a>
-                    <form action="{{ route('blogs.destroy', $blogs->id) }}" method="post">
+                    <a class="btn btn-primary mr-2" href="{{ route('category.edit', $category->id) }}">Edit</a>
+                    <form action="{{ route('category.destroy', $category->id) }}" method="post">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger" type="submit">Delete</button>
                     </form>
                 </div>
-            </div>
-            <div class="col-md-12">
-                <p>{{ $blogs->body }}</p>
             </div>
         </article>
     </div>

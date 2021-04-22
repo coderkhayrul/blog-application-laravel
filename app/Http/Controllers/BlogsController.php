@@ -60,6 +60,7 @@ class BlogsController extends Controller
         return redirect()->route('blogs.index');
 
     }
+
     public function trash()
     {
         $trashedBlogs = Blog::onlyTrashed()->get();

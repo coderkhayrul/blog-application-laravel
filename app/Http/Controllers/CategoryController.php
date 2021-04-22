@@ -8,7 +8,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Str;
 
 class CategoryController extends Controller
@@ -52,23 +52,26 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
-     * @return void
+     * @param $slug
+     * @return Application|Factory|View
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $category = Category::where('slug', $slug)->first();
+        return view('categories.show', compact('category'));
+
     }
 
     /**
      * Show the form for editing the specified resource.
-     *
+     *s
      * @param int $id
-     * @return void
+     * @return Application|Factory|View
      */
     public function edit($id)
     {
-        //
+        $category =Category::findOrFail($id);
+        return view('categories.edit', compact('category'));
     }
 
     /**
@@ -76,21 +79,27 @@ class CategoryController extends Controller
      *
      * @param Request $request
      * @param int $id
-     * @return void
+     * @return RedirectResponse
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->name =strtoupper($request->name);
+        $category->slug = Str::slug($request->name, '-');
+        $category->save();
+        return redirect()->route('category.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return void
+     * @return Application|RedirectResponse|Redirector
      */
     public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return redirect('/category');
     }
 }
