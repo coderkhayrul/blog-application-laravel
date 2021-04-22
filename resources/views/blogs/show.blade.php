@@ -3,6 +3,12 @@
     <div class="container-fluid">
         <article>
             <div class="jumbotron">
+                <div class="col-md 12">
+                    @if($blogs->featured_image)
+                        <img width="250px" class="img-responsive" src="/images/featured_image/{{ $blogs->featured_image ? $blogs->featured_image : ''}}" alt="featured image">
+                    @endif
+                </div>
+                <hr>
                 <h1>{{ $blogs->title }}</h1>
                 <div class="btn-group">
                     <a class="btn btn-primary mr-2" href="{{ route('blogs.edit', $blogs->id) }}">Edit</a>
