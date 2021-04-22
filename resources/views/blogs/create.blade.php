@@ -21,6 +21,10 @@
                         <label class="form-check-label ">{{ $category->name }}</label>
                    @endforeach
                </div>
+               <div class="form-group">
+                   <label class="form-check-label" for="featured_image">Feature Image</label>
+                   <input class="form-control" type="file" name="featured_image">
+               </div>
                <button type="submit" class="btn btn-primary">Create a new Blog</button>
            </form>
        </div>
