@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
-@section('meta_title'){{ $blogs->meta_title }}@endsection
-@section('meta_description'){{ $blogs->meta_description }}@endsection
+@include('partials.meta_dynamic');
 @section('content')
 
     <div class="container-fluid">
