@@ -17,8 +17,9 @@
                     <textarea class="form-control" name="body" id="" cols="30" rows="10">{{ $blogs->body }}</textarea>
                 </div>
                 <div class="form-group form-check form-check-inline">
-                    @foreach($categories as $category)
-                        <input class="form-check-input ml-2" type="checkbox" value="{{ $category->id }}" name="category_id[]">
+                    {{ $blogs->category->count() ? 'Current Categories' : '' }} &nbsp;
+                    @foreach($blogs->category as $category)
+                        <input class="form-check-input ml-2" type="checkbox" value="{{ $category->id }}" name="category_id[]" checked>
                         <label class="form-check-label ">{{ $category->name }}</label>
                     @endforeach
                 </div>
