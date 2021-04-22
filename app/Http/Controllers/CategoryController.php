@@ -6,8 +6,10 @@ use App\Models\Category;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -25,22 +27,26 @@ class CategoryController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return void
+     * @return Application|Factory|View
      */
     public function create()
     {
-        //
+        return view('categories.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return void
+     * @return RedirectResponse
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category();
+        $category->name = strtoupper($request->name);
+        $category->slug = Str::slug($request->name, '-');
+        $category->save();
+        return  back();
     }
 
     /**
