@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="col-md-12">
-                <p>{{ $blogs->body }}</p>
+                <p>{!! $blogs->body !!}</p>
                 <hr>
                 <strong>Categories:</strong>
                 @foreach($blogs->category as $category)

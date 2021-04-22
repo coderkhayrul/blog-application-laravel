@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+    @include('partials.tinymce')
    <div class="container-fluid">
        <div class="jumbotron">
            <h1>Crate New Blog</h1>
@@ -13,7 +14,8 @@
                </div>
                <div class="form-group">
                    <label for="body">Body</label>
-                   <textarea class="form-control" name="body" id="" cols="30" rows="10"></textarea>
+                    <!--<textarea class="form-control" name="body" id="" cols="30" rows="10"></textarea> -->
+                   <textarea class="form-control" id="mytextarea" name="body"></textarea>
                </div>
                <div class="form-group form-check form-check-inline">
                    @foreach($categories as $category)
