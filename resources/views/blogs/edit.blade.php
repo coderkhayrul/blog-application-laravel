@@ -23,7 +23,15 @@
                         <label class="form-check-label ">{{ $category->name }}</label>
                     @endforeach
                 </div>
-                <br></br>
+                <br>
+                <div class="form-group form-check form-check-inline">
+                    {{ $filter->count() ? 'Unused Categories' : '' }} &nbsp;
+                    @foreach($filter as $unused_category)
+                        <input class="form-check-input ml-2" type="checkbox" value="{{ $unused_category->id }}" name="category_id[]">
+                        <label class="form-check-label ">{{ $unused_category->name }}</label>
+                    @endforeach
+                </div>
+                <br>
                 <button type="submit" class="btn btn-primary">Update a Blog</button>
             </form>
         </div>
