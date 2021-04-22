@@ -1,5 +1,9 @@
 @extends('layouts.app')
+
+@section('meta_title'){{ $blogs->meta_title }}@endsection
+@section('meta_description'){{ $blogs->meta_description }}@endsection
 @section('content')
+
     <div class="container-fluid">
         <article>
             <div class="jumbotron">

@@ -28,8 +28,8 @@ class BlogsController extends Controller
         $input = $request->all();
 //        Meta Stuff
         $input['slug'] = Str::slug($request->title, '-');
-        $input['meta_title'] = Str::limit($request->title, 40, ' (...)');
-        $input['meta_description'] = Str::limit($request->body, 80, ' (...)');
+        $input['meta_title'] = Str::limit($request->title, 40, '....');
+        $input['meta_description'] = Str::limit($request->body, 80, '....');
         // Image Update
         if ($file = $request->featured_image){
             $name =uniqid() . $file->getClientOriginalName();
