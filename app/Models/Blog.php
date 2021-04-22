@@ -11,7 +11,7 @@ class Blog extends Model
     use SoftDeletes;
     use HasFactory;
     protected $dates = ['deleted_at'];
-    protected $fillable = ['title', 'body','featured_image'];
+    protected $fillable = ['title', 'body','featured_image', 'slug', 'meta_title','meta_description'];
 
     //  Many Relationship
     public function  category(){
