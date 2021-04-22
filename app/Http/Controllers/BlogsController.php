@@ -17,7 +17,7 @@ class BlogsController extends Controller
     // Create Method
     public function create()
     {
-        $categories = Category::all();
+        $categories = Category::latest()->get();
         return view('blogs.create', compact('categories'));
     }
     // Store Method
@@ -41,14 +41,19 @@ class BlogsController extends Controller
     // Edit Method
     public function edit($id)
     {
+        $categories = Category::latest()->get();
         $blogs = Blog::findOrFail($id);
-        return view('blogs.edit', compact('blogs'));
+        return view('blogs.edit', compact('blogs', 'categories'));
     }
     public function update(Request $request, $id)
     {
         $input = $request->all();
         $blog = Blog::findOrFail($id);
         $blog->update($input);
+        //  sync with category
+        if ($request->category_id){
+            $blog->category()->sync($request->category_id);
+        }
         return redirect()->route('blogs.index');
 
     }
