@@ -5,7 +5,7 @@
            <h1>Crate New Blog</h1>
        </div>
        <div class="col-md-12">
-           <form action="{{ route('blogs.store') }}" method="post">
+           <form action="{{ route('blogs.store') }}" method="post" enctype="multipart/form-data">
                @csrf
                <div class="form-group">
                    <label for="title">Title</label>

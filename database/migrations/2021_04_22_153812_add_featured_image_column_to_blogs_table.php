@@ -14,7 +14,7 @@ class AddFeaturedImageColumnToBlogsTable extends Migration
     public function up()
     {
         Schema::table('blogs', function (Blueprint $table) {
-            $table->string('features_image')->nullable();
+            $table->string('featured_image')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AddFeaturedImageColumnToBlogsTable extends Migration
     public function down()
     {
         Schema::table('blogs', function (Blueprint $table) {
-            $table->dropColumn('features_image');
+            $table->dropColumn('featured_image');
         });
     }
 }
