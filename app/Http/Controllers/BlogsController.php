@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\BlogPublished;
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -58,6 +61,13 @@ class BlogsController extends Controller
         if ($request->category_id){
             $blogByUser->category()->sync($request->category_id);
         }
+
+//        //  Send Mail
+//        $users = User::all();
+//        foreach ($users as $user){
+//            Mail::to($user->email)->queue(new BlogPublished($blogByUser));
+//        }
+
         Session::flash('success','Blog Create Success!');
         return redirect('/blogs');
 
