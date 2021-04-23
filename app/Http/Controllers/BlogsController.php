@@ -7,8 +7,10 @@ use App\Models\Category;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+
 
 class BlogsController extends Controller
 {
@@ -56,6 +58,7 @@ class BlogsController extends Controller
         if ($request->category_id){
             $blogByUser->category()->sync($request->category_id);
         }
+        Session::flash('success','Blog Create Success!');
         return redirect('/blogs');
 
     }
