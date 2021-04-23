@@ -31,16 +31,18 @@ class BlogsController extends Controller
         $input['slug'] = Str::slug($request->title, '-');
         $input['meta_title'] = Str::limit($request->title, 40, '....');
         $input['meta_description'] = Str::limit($request->body, 80, '....');
+        $input['user_id'] = auth()->id();
         // Image Update
         if ($file = $request->featured_image){
             $name =uniqid() . $file->getClientOriginalName();
             $file->move('images/featured_image',$name);
             $input['featured_image'] = $name;
         }
-        $blog = Blog::create($input);
+        $blogByUser = Blog::create($input);
+
         //  sync with category
         if ($request->category_id){
-            $blog->category()->sync($request->category_id);
+            $blogByUser->category()->sync($request->category_id);
         }
         return redirect('/blogs');
 
