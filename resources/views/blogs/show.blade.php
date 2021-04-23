@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @include('partials.meta_dynamic');
 @section('content')
 

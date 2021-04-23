@@ -1,6 +1,6 @@
 @extends('layouts.app')
+@include('partials.meta_static');
 @section('content')
-    @include('partials.meta_static');
     <div class="container">
         @foreach($blogs as $blog)
             <h2>

@@ -39,7 +39,10 @@ Route::get('/blogs/{id}/edit', [BlogsController::class, 'edit'])->name('blogs.ed
 Route::put('/blogs/{id}/update', [BlogsController::class, 'update'])->name('blogs.update');
 Route::delete('/blogs/{id}/destroy', [BlogsController::class, 'destroy'])->name('blogs.destroy');
 
-// <-- ADMIN ROUTES -->
-Route::get('/admin', [AdminController::class , 'index'])->name('admin.index');
 //Category Resource Route
 Route::resource('/category', CategoryController::class);
+
+// <-- ADMIN ROUTES -->
+Route::get('/admin', [AdminController::class , 'index'])->name('admin.index');
+Route::get('/admin/blogs', [AdminController::class , 'blogs'])->name('admin.blogs');
+
