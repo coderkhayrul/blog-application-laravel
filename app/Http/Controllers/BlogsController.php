@@ -10,11 +10,15 @@ use Illuminate\Support\Str;
 
 class BlogsController extends Controller
 {
+//    public function __construct()
+//    {
+//        $this->middleware('admin', ['except' => ['create', 'store', 'edit', 'update', 'destroy', 'trash', 'restore', 'permanent_delete']]);
+//    }
+
     // Index Method
     public function index()
     {
-        $blogs =Blog::where('status', 1)->latest()->get();
-//        $blogs =  Blog::latest()->get();
+        $blogs =  Blog::latest()->get();
         return view('blogs.index', compact('blogs'));
     }
     // Create Method
