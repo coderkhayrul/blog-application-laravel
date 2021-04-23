@@ -11,13 +11,20 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li><a class="nav-link" href="{{ route('blogs.index') }}">Blogs <span class="badge bg-danger text-white">{{ $blogs->count() }}</span></a></li>
-                <li><a class="nav-link" href="{{ route('admin.index') }}">Admin</a></li>
                 <li><a class="nav-link" href="{{ route('category.index') }}">Categories<span class="badge bg-danger text-white">{{ $category->count() }}</span></a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
+                @if(auth()->user() && Auth::user()->role_id === 1)
+                    <li><a class="nav-link" href="{{ route('admin.index') }}">Admin</a></li>
+                @elseif(auth()->user() && Auth::user()->role_id === 2)
+                    <li><a class="nav-link" href="{{ route('admin.index') }}">Author</a></li>
+                @elseif(auth()->user() && Auth::user()->role_id === 3)
+                    <li><a class="nav-link" href="{{ route('admin.index') }}">Subscriber</a></li>
+                @endif
+
                 @guest
                     @if (Route::has('login'))
                         <li class="nav-item">

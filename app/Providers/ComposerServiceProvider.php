@@ -27,7 +27,7 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer(['layouts.nav'], function ($view){
-            $view->with('blogs', Blog::all());
+            $view->with('blogs', Blog::where('status', 1)->latest()->get());
         });
         View::composer(['layouts.nav'], function ($view){
             $view->with('category', Category::all());
