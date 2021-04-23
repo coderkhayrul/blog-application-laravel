@@ -4,7 +4,7 @@
     <div class="container">
         @if(\Illuminate\Support\Facades\Session::has('success'))
             <div class="alert alert-success">
-                {{ Session::get('success') }}
+                {{ \Illuminate\Support\Facades\Session::get('success') }}
             </div>
         @endif
         @foreach($blogs as $blog)
