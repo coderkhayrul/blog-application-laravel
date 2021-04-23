@@ -13,7 +13,8 @@ class BlogsController extends Controller
     // Index Method
     public function index()
     {
-        $blogs =  Blog::latest()->get();
+        $blogs =Blog::where('status', 1)->latest()->get();
+//        $blogs =  Blog::latest()->get();
         return view('blogs.index', compact('blogs'));
     }
     // Create Method
