@@ -12,6 +12,13 @@
                 @foreach($publishedBlogs as $blog)
                     <h2>
                         <a href="{{ route('blogs.show', $blog->id) }}">{{ $blog->title }}</a>
+
+                        <form action="{{ route('blogs.update', $blog->id) }}" method="post">
+                            @csrf
+                            @method('put')
+                                <input type="checkbox" name="status" value="0" checked style="display: none"/>
+                                <button class="btn btn-warning btn-xs" type="submit">Save as draft</button>
+                        </form>
                     </h2>
                 @endforeach
             </div>
@@ -21,6 +28,12 @@
                 @foreach($draftdBlogs as $blog)
                     <h2>
                         <a href="{{ route('blogs.show', $blog->id) }}">{{ $blog->title }}</a>
+                        <form action="{{ route('blogs.update', $blog->id) }}" method="post">
+                            @csrf
+                            @method('put')
+                            <input type="checkbox" name="status" value="1" checked style="display: none"/>
+                            <button class="btn btn-primary btn-xs" type="submit">Published</button>
+                        </form>
                     </h2>
                 @endforeach
             </div>

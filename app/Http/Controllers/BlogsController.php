@@ -67,6 +67,7 @@ class BlogsController extends Controller
     }
     public function update(Request $request, $id)
     {
+
         $input = $request->all();
         $blog = Blog::findOrFail($id);
         $blog->update($input);
