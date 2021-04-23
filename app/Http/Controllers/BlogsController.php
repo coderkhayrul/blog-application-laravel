@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Category;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 
 class BlogsController extends Controller
 {
@@ -30,6 +32,12 @@ class BlogsController extends Controller
     // Store Method
     public function store(Request $request)
     {
+        // Validation Data
+        $this->validate($request, [
+            'title' => 'required','min:10','max:150',
+            'body' => 'required','min:10','max:150',
+        ]);
+
         $input = $request->all();
 //        Meta Stuff
         $input['slug'] = Str::slug($request->title, '-');
